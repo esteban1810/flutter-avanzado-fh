@@ -28,7 +28,8 @@ class Page2Screen extends StatelessWidget {
           ),
           MaterialButton(
             onPressed: (){
-              usuarioService.usuario!.edad = 10;
+              usuarioService.cambiarEdad(20);
+              // usuarioService.usuario!.edad = 10;
             },
             color: Colors.blue,
             child: const Text(

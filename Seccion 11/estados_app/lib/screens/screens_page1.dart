@@ -13,9 +13,17 @@ class Page1Screen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Page1Screen'),
       ),
-      body: usuarioService.existsUser ? 
-              _CustomBody(usuario: usuarioService.usuario!) : 
-              const Center(child: Text('El usuario no ha sido configurado')),
+      body: StreamBuilder(
+        stream: usuarioService.streamController.stream,
+        //{required Widget Function(BuildContext, AsyncSnapshot<dynamic>) builder}
+        builder: (BuildContext context, AsyncSnapshot<dynamic> builder){
+          // if(builder.hasData){
+          return builder.hasData ? 
+            _CustomBody(usuario: usuarioService.usuario!) : 
+            const Center(child: Text('El usuario no ha sido configurado'));
+          // }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/page2'),
         child: const Icon(Icons.next_week_outlined),
