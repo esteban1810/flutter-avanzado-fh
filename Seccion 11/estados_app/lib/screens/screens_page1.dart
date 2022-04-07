@@ -1,3 +1,4 @@
+import 'package:estados_app/services/usuario_service.dart';
 import 'package:flutter/material.dart';
 
 class Page1Screen extends StatelessWidget {
@@ -10,7 +11,9 @@ class Page1Screen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Page1Screen'),
       ),
-      body: _CustomBody(),
+      body: usuarioService.existsUser ? 
+              const _CustomBody() : 
+              const Center(child: Text('El usuario no ha sido configurado')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/page2'),
         child: const Icon(Icons.next_week_outlined),
