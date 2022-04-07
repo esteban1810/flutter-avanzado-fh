@@ -4,12 +4,12 @@ import 'package:estados_app/models/usuario_model.dart';
 
 class _UsuarioService{
   Usuario? _usuario;
-  StreamController<Usuario> _streamController = StreamController();
+  final StreamController<Usuario> _streamController = StreamController.broadcast();
 
   Usuario? get usuario => _usuario;
   bool get existsUser => usuario!=null;
 
-  StreamController<Usuario> get streamController =>_streamController;
+  Stream get stream =>_streamController.stream;
 
   void cargarUsuario(Usuario usuario){
     _usuario = usuario;
@@ -19,6 +19,10 @@ class _UsuarioService{
   void cambiarEdad(int edad){
     _usuario!.edad = edad;
     _streamController.add(_usuario!);
+  }
+
+  close(){
+    _streamController.close();
   }
 }
 

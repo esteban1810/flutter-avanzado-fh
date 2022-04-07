@@ -14,7 +14,7 @@ class Page1Screen extends StatelessWidget {
         title: const Text('Page1Screen'),
       ),
       body: StreamBuilder(
-        stream: usuarioService.streamController.stream,
+        stream: usuarioService.stream,
         //{required Widget Function(BuildContext, AsyncSnapshot<dynamic>) builder}
         builder: (BuildContext context, AsyncSnapshot<dynamic> builder){
           // if(builder.hasData){

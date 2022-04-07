@@ -10,7 +10,15 @@ class Page2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Page2Screen'),
+        title: StreamBuilder(
+          stream:usuarioService.stream,
+          builder: (context,snapshot){
+            return snapshot.hasData ?
+                      Text(usuarioService.usuario!.nombre) :
+                      const Text('Page2Screen');
+          },
+        ) 
+        // const Text('Page2Screen'),
       ),
       body:  Center(
       child: Column(
