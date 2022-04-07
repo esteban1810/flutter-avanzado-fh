@@ -1,6 +1,8 @@
 import 'package:estados_app/services/usuario_service.dart';
 import 'package:flutter/material.dart';
 
+import '../models/usuario_model.dart';
+
 class Page1Screen extends StatelessWidget {
    
   const Page1Screen({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class Page1Screen extends StatelessWidget {
         title: const Text('Page1Screen'),
       ),
       body: usuarioService.existsUser ? 
-              const _CustomBody() : 
+              _CustomBody(usuario: usuarioService.usuario!) : 
               const Center(child: Text('El usuario no ha sido configurado')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/page2'),
@@ -23,8 +25,11 @@ class Page1Screen extends StatelessWidget {
 }
 
 class _CustomBody extends StatelessWidget {
+  final Usuario usuario;
+  
   const _CustomBody({
-    Key? key,
+    Key? key, 
+    required this.usuario,
   }) : super(key: key);
 
   @override
@@ -33,24 +38,24 @@ class _CustomBody extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
+        children:  [
+          const Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
           ListTile(
-            title: Text('Nombre'),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad'),
+            title: Text('Edad: ${usuario.edad}'),
           ),
-          Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
-          ListTile(
+          const Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
+          const ListTile(
             title: Text('Profesion 1'),
           ),
-          ListTile(
+          const ListTile(
             title: Text('Profesion 1'),
           ),
-          ListTile(
+          const ListTile(
             title: Text('Profesion 1'),
           ),
         ]),
