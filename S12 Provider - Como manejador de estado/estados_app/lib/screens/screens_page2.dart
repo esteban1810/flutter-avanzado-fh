@@ -1,4 +1,7 @@
+import 'package:estados_app/models/usuario_model.dart';
+import 'package:estados_app/services/usuario_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Page2Screen extends StatelessWidget {
    
@@ -16,6 +19,8 @@ class Page2Screen extends StatelessWidget {
         children: [
           MaterialButton(
             onPressed: (){
+              final usuarioService = Provider.of<UsuarioService>(context,listen: false);
+              usuarioService.setUsuario = Usuario(nombre: 'Pedro E', edad: 22, profesiones: ['1']);
             },
             color: Colors.blue,
             child: const Text(
