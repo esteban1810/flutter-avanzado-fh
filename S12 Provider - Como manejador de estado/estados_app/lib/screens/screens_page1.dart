@@ -55,15 +55,11 @@ class _CustomBody extends StatelessWidget {
           ),
           const Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
           const Divider(),
-          const ListTile(
-            title: Text('Profesion 1'),
-          ),
-          const ListTile(
-            title: Text('Profesion 1'),
-          ),
-          const ListTile(
-            title: Text('Profesion 1'),
-          ),
+
+          ...usuario.profesiones.map((e) => ListTile(
+            title: Text(e),
+          )).toList()
+          
         ]),
     );
   }
