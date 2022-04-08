@@ -15,6 +15,12 @@ class Page1Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page1Screen'),
+        actions: [
+          IconButton(onPressed: (){
+            usuarioService.eliminarUsuario();
+          }, 
+          icon: const Icon(Icons.exit_to_app_sharp))
+        ],
       ),
       body: usuarioService.existsUsuario ? _CustomBody(usuario: usuarioService.getUsuario!,) : const Center(child: Text('El usuario no existe'),),
       floatingActionButton: FloatingActionButton(

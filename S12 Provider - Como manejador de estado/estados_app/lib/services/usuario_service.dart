@@ -13,4 +13,14 @@ class UsuarioService with ChangeNotifier{
     _usuario = usuario;
     notifyListeners();
   }
+
+  void cambiarEdad(int edad){
+    _usuario!.edad = edad;
+    notifyListeners();
+  }
+
+  void eliminarUsuario(){
+    _usuario = null;
+    notifyListeners();
+  }
 }
