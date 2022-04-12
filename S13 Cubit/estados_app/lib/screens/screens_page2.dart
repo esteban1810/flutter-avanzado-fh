@@ -30,6 +30,7 @@ class Page2Screen extends StatelessWidget {
           ),
           MaterialButton(
             onPressed: (){
+              context.read<UsuarioCubit>().cambiarEdad(30);
             },
             color: Colors.blue,
             child: const Text(
