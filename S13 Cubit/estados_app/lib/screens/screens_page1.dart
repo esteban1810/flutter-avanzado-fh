@@ -13,6 +13,12 @@ class Page1Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page1Screen'),
+        actions: [
+          IconButton(
+            onPressed: context.read<UsuarioCubit>().borrarUsuario, 
+            icon: const Icon(Icons.exit_to_app)
+          )
+        ],
       ),
       body: const _BlocBuilder(),
       // const _CustomBody(),
