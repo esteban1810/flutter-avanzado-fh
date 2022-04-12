@@ -14,3 +14,9 @@ class ChangeUsuario extends UsuarioEvent{
   ChangeUsuario(this.edad);
 
 }
+
+class AddProfesionUsuario extends UsuarioEvent{
+  final String profesion;
+
+  AddProfesionUsuario(this.profesion);
+}

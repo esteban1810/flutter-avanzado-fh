@@ -40,7 +40,9 @@ class Page2Screen extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: (){},
+            onPressed: (){
+              blocProvider.add(AddProfesionUsuario('Albañil'));
+            },
             color: Colors.blue,
             child: const Text(
               'Añadir Profesion',

@@ -18,5 +18,11 @@ class UsuarioBloc extends Bloc<UsuarioEvent,UsuarioState>{
       }
     });
 
+    on<AddProfesionUsuario>((event, emit){
+      if(state.exists){
+        final usuario = state.user!.copyWith(profesiones: [...state.user!.profesiones,'Profesión: '+(state.user!.profesiones.length+1).toString()]);
+        emit(UsuarioSetState(usuario));
+      }
+    });
   }
 }
