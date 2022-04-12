@@ -20,3 +20,6 @@ class AddProfesionUsuario extends UsuarioEvent{
 
   AddProfesionUsuario(this.profesion);
 }
+
+
+class DeleteUsuario extends UsuarioEvent{}

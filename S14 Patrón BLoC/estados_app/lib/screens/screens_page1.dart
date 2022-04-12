@@ -13,10 +13,18 @@ class Page1Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page1Screen'),
+        actions: [
+          IconButton(
+            onPressed: (){
+              BlocProvider.of<UsuarioBloc>(context).add(DeleteUsuario());
+            }, 
+            icon: const Icon(Icons.delete_outline)
+          ),
+        ],
       ),
       body: BlocBuilder<UsuarioBloc, UsuarioState>(
         builder: (context, state) {
-          return state is UsuarioInitialState ?
+          return !state.exists ?
                     const Center(child: Text('No hay usuarios'),) :
                     _CustomBody(user: state.user!,);
         },

@@ -24,5 +24,12 @@ class UsuarioBloc extends Bloc<UsuarioEvent,UsuarioState>{
         emit(UsuarioSetState(usuario));
       }
     });
+
+
+    on<DeleteUsuario>((event, emit){
+      if(state.exists){
+        emit(const UsuarioDeletedState());
+      }
+    });
   }
 }

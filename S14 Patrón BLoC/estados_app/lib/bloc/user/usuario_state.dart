@@ -16,3 +16,8 @@ class UsuarioInitialState extends UsuarioState{}
 class UsuarioSetState extends UsuarioState{
   const UsuarioSetState(Usuario user):super(exists:true,user:user);
 }
+
+
+class UsuarioDeletedState extends UsuarioState{
+  const UsuarioDeletedState():super();
+}
