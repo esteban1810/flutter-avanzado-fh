@@ -11,3 +11,18 @@ class UsuarioInitial extends UsuarioState{
     return 'USUARIO: {exists:false}';
   }
 }
+
+
+class UsuarioActivo extends UsuarioState{
+  final exists = true;
+  final Usuario usuario;
+
+  UsuarioActivo(this.usuario);
+  
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'USUARIO: {exists:true}';
+  }
+}

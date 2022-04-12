@@ -1,4 +1,7 @@
+import 'package:estados_app/bloc/usuario/usuario_cubit.dart';
+import 'package:estados_app/models/usuario_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Page2Screen extends StatelessWidget {
    
@@ -16,6 +19,8 @@ class Page2Screen extends StatelessWidget {
         children: [
           MaterialButton(
             onPressed: (){
+              Usuario user = Usuario(nombre: 'Pedro E', edad: 22, profesiones: ['Programador']);
+              context.read<UsuarioCubit>().selectUser(user);
             },
             color: Colors.blue,
             child: const Text(
