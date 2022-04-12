@@ -9,6 +9,7 @@ class Page2Screen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    final blocProvider = BlocProvider.of<UsuarioBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page2Screen')
@@ -20,7 +21,7 @@ class Page2Screen extends StatelessWidget {
           MaterialButton(
             onPressed: (){
               final user = Usuario(nombre: 'Esteban Sevilla', edad: 22, profesiones: ['Programador','Tester']);
-              BlocProvider.of<UsuarioBloc>(context).add(ActivateUsuario(user));
+              blocProvider.add(ActivateUsuario(user));
             },
             color: Colors.blue,
             child: const Text(
@@ -30,6 +31,7 @@ class Page2Screen extends StatelessWidget {
           ),
           MaterialButton(
             onPressed: (){
+              blocProvider.add(ChangeUsuario(30));
             },
             color: Colors.blue,
             child: const Text(

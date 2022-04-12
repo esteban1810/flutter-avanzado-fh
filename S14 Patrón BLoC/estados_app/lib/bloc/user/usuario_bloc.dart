@@ -9,5 +9,14 @@ part 'usuario_event.dart';
 class UsuarioBloc extends Bloc<UsuarioEvent,UsuarioState>{
   UsuarioBloc() : super(UsuarioInitialState()){
     on<ActivateUsuario>((event, emit) => emit(UsuarioSetState(event.user)));
+
+
+    on<ChangeUsuario>((event, emit){
+      if(state.user!=null){
+        final user = state.user!.copyWith(edad: event.edad);
+        emit(UsuarioSetState(user));
+      }
+    });
+
   }
 }
