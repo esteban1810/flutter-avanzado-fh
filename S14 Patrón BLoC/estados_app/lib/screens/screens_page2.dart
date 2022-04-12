@@ -19,7 +19,7 @@ class Page2Screen extends StatelessWidget {
         children: [
           MaterialButton(
             onPressed: (){
-              final user = Usuario(nombre: 'Esteban Sevilla', edad: 22, profesiones: ['Programador']);
+              final user = Usuario(nombre: 'Esteban Sevilla', edad: 22, profesiones: ['Programador','Tester']);
               BlocProvider.of<UsuarioBloc>(context).add(ActivateUsuario(user));
             },
             color: Colors.blue,

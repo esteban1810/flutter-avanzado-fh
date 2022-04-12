@@ -18,7 +18,7 @@ class Page1Screen extends StatelessWidget {
         builder: (context, state) {
           return state is UsuarioInitialState ?
                     const Center(child: Text('No hay usuarios'),) :
-                    const _CustomBody();
+                    _CustomBody(user: state.user!,);
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -30,9 +30,11 @@ class Page1Screen extends StatelessWidget {
 }
 
 class _CustomBody extends StatelessWidget {
+  final Usuario user;
   
   const _CustomBody({
     Key? key, 
+    required this.user, 
   }) : super(key: key);
 
   @override
@@ -41,26 +43,18 @@ class _CustomBody extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  const [
-          Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
+        children: [
+          const Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
           ListTile(
-            title: Text('Nombre:'),
+            title: Text('Nombre: ${user.nombre}'),
           ),
           ListTile(
-            title: Text('Edad:'),
+            title: Text('Edad: ${user.edad}'),
           ),
-          Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
-          ListTile(
-            title: Text('Profesion 1'),
-          ),
-          ListTile(
-            title: Text('Profesion 1'),
-          ),
-          ListTile(
-            title: Text('Profesion 1'),
-          ),
+          const Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
+          ...user.profesiones.map((e) => ListTile(title: Text(e))).toList()
         ]),
     );
   }

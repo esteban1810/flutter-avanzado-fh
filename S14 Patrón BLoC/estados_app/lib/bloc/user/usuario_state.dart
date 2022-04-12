@@ -14,5 +14,5 @@ abstract class UsuarioState{
 class UsuarioInitialState extends UsuarioState{}
 
 class UsuarioSetState extends UsuarioState{
-  UsuarioSetState(Usuario user):super(exists:true,user:user);
+  const UsuarioSetState(Usuario user):super(exists:true,user:user);
 }
