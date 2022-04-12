@@ -1,4 +1,6 @@
+import 'package:estados_app/bloc/usuario/usuario_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../models/usuario_model.dart';
 
@@ -12,7 +14,18 @@ class Page1Screen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Page1Screen'),
       ),
-      body: const _CustomBody(),
+      body: BlocBuilder<UsuarioCubit,UsuarioState>(
+        builder: (BuildContext context, state) { 
+          print(state);
+
+          if(state is UsuarioInitial){
+            return const Center(child: Text('No hay usuario'),);
+          } else {
+            return const _CustomBody();
+          }
+        },
+      ),
+      // const _CustomBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/page2'),
         child: const Icon(Icons.next_week_outlined),
