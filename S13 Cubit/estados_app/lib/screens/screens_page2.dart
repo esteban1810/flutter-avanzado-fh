@@ -19,7 +19,7 @@ class Page2Screen extends StatelessWidget {
         children: [
           MaterialButton(
             onPressed: (){
-              Usuario user = Usuario(nombre: 'Pedro E', edad: 22, profesiones: ['Programador']);
+              Usuario user = Usuario(nombre: 'Pedro E', edad: 22, profesiones: ['Programador','Tester']);
               context.read<UsuarioCubit>().selectUser(user);
             },
             color: Colors.blue,

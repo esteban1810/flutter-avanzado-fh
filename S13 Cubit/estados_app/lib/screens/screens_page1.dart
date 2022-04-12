@@ -14,17 +14,7 @@ class Page1Screen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Page1Screen'),
       ),
-      body: BlocBuilder<UsuarioCubit,UsuarioState>(
-        builder: (BuildContext context, state) { 
-          print(state);
-
-          if(state is UsuarioInitial){
-            return const Center(child: Text('No hay usuario'),);
-          } else {
-            return const _CustomBody();
-          }
-        },
-      ),
+      body: const _BlocBuilder(),
       // const _CustomBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/page2'),
@@ -34,10 +24,33 @@ class Page1Screen extends StatelessWidget {
   }
 }
 
+class _BlocBuilder extends StatelessWidget {
+  const _BlocBuilder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UsuarioCubit,UsuarioState>(
+      builder: (BuildContext context,UsuarioState state) { 
+        switch(state.runtimeType){
+          case UsuarioInitial:
+            return const Center(child: Text('No hay usuario'),);
+          case UsuarioActivo:
+            return  _CustomBody(usuario: (state as UsuarioActivo).usuario,);
+          default:
+            return const Center(child: Text('Estado Desconocido'),);
+        }
+      },
+    );
+  }
+}
+
 class _CustomBody extends StatelessWidget {
+  final Usuario usuario;
   
   const _CustomBody({
-    Key? key, 
+    Key? key, required this.usuario, 
   }) : super(key: key);
 
   @override
@@ -46,26 +59,20 @@ class _CustomBody extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  const [
-          Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
+        children: [
+          const Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
           ListTile(
-            title: Text('Nombre:'),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad:'),
+            title: Text('Edad: ${usuario.edad}'),
           ),
-          Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
-          ListTile(
-            title: Text('Profesion 1'),
-          ),
-          ListTile(
-            title: Text('Profesion 1'),
-          ),
-          ListTile(
-            title: Text('Profesion 1'),
-          ),
+          const Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
+          ...usuario.profesiones.map((e)=>ListTile(
+            title: Text(e),
+          )).toList()
         ]),
     );
   }
