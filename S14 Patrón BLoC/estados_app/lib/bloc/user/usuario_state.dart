@@ -5,9 +5,11 @@ abstract class UsuarioState{
   final bool exists;
   final Usuario? user;
 
-  UsuarioState(
-    this.exists, 
+  const UsuarioState({
+    this.exists = false, 
     this.user
-  );
+  });
 }
 
+class UsuarioInitialState extends UsuarioState{
+}
