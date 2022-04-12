@@ -11,5 +11,8 @@ abstract class UsuarioState{
   });
 }
 
-class UsuarioInitialState extends UsuarioState{
+class UsuarioInitialState extends UsuarioState{}
+
+class UsuarioSetState extends UsuarioState{
+  UsuarioSetState(Usuario user):super(exists:true,user:user);
 }

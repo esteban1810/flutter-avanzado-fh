@@ -1,4 +1,7 @@
+import 'package:estados_app/bloc/user/usuario_bloc.dart';
+import 'package:estados_app/models/usuario_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Page2Screen extends StatelessWidget {
    
@@ -16,6 +19,8 @@ class Page2Screen extends StatelessWidget {
         children: [
           MaterialButton(
             onPressed: (){
+              final user = Usuario(nombre: 'Esteban Sevilla', edad: 22, profesiones: ['Programador']);
+              BlocProvider.of<UsuarioBloc>(context).add(ActivateUsuario(user));
             },
             color: Colors.blue,
             child: const Text(
