@@ -7,6 +7,8 @@ class UsuarioController extends GetxController{
   var exists = false.obs;
   var user = Usuario().obs;
 
+  get profesionesLength => user.value.profesiones!.length;
+
   void setUsuario(Usuario user){
     this.user.value = user;
     exists.value = true;
@@ -16,5 +18,10 @@ class UsuarioController extends GetxController{
     user.update((val) {
       val!.edad = edad;
     });
+  }
+
+  void agregarProfesion(String profesion){
+    user.value.profesiones!.add(profesion);
+    user.refresh();
   }
 }

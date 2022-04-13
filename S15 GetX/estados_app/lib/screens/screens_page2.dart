@@ -43,7 +43,9 @@ class Page2Screen extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: (){},
+            onPressed: (){
+              usuarioController.agregarProfesion('Profesión #${usuarioController.profesionesLength+1}');
+            },
             color: Colors.blue,
             child: const Text(
               'Añadir Profesion',
