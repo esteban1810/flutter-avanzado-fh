@@ -1,4 +1,6 @@
+import 'package:estados_app/screens/screens_page2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 import '../models/usuario_model.dart';
 
@@ -14,7 +16,8 @@ class Page1Screen extends StatelessWidget {
       ),
       body: const _CustomBody(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, '/page2'),
+        // onPressed: () => Navigator.pushNamed(context, '/page2'),
+        onPressed: () => Get.toNamed('/page2',arguments: {'nombre':'Esteban Sevilla','edad':22}),
         child: const Icon(Icons.next_week_outlined),
       ),
     );
