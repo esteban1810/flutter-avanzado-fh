@@ -20,7 +20,7 @@ class Page1Screen extends StatelessWidget {
       ),
       body: Obx(
         ()=> usuarioController.exists.value ?
-              const _CustomBody() :
+              _CustomBody(usuario: usuarioController.user.value) :
               const Center(child: Text('No se pudo'),)
       ),
       // const Center(child: Text('No existe Usuario')),
@@ -40,9 +40,10 @@ class Page1Screen extends StatelessWidget {
 }
 
 class _CustomBody extends StatelessWidget {
-  
+  final Usuario usuario;
   const _CustomBody({
     Key? key, 
+    required this.usuario, 
   }) : super(key: key);
 
   @override
@@ -51,24 +52,24 @@ class _CustomBody extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  const [
-          Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
+        children: [
+          const Text('General',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
           ListTile(
-            title: Text('Nombre:'),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad:'),
+            title: Text('Edad: ${usuario.edad}'),
           ),
-          Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-          Divider(),
-          ListTile(
+          const Text('Profesiones',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+          const Divider(),
+          const ListTile(
             title: Text('Profesion 1'),
           ),
-          ListTile(
+          const ListTile(
             title: Text('Profesion 1'),
           ),
-          ListTile(
+          const ListTile(
             title: Text('Profesion 1'),
           ),
         ]),
