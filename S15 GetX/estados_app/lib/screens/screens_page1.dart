@@ -1,6 +1,7 @@
+import 'package:estados_app/controllers/usuario_controller.dart';
 import 'package:estados_app/screens/screens_page2.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 import '../models/usuario_model.dart';
 
@@ -10,11 +11,25 @@ class Page1Screen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    final usuarioController = Get.put(UsuarioController());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page1Screen'),
       ),
-      body: const _CustomBody(),
+      body: Obx(
+        ()=> usuarioController.exists.value ?
+              const _CustomBody() :
+              const Center(child: Text('No se pudo'),)
+      ),
+      // const Center(child: Text('No existe Usuario')),
+      // body: Obx(() => 
+      // // usuarioController.exists ?
+      // //                   const _CustomBody() :
+      //                   const Center(child: Text('No existe usuario')),
+      //       ),
+      // const _CustomBody(),
       floatingActionButton: FloatingActionButton(
         // onPressed: () => Navigator.pushNamed(context, '/page2'),
         onPressed: () => Get.toNamed('/page2',arguments: {'nombre':'Esteban Sevilla','edad':22}),
