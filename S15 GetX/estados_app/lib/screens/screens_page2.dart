@@ -25,6 +25,9 @@ class Page2Screen extends StatelessWidget {
           MaterialButton(
             onPressed: (){
               usuarioController.setUsuario(Usuario(edad: 22,nombre: 'Pedro Gutiérrez',profesiones: ['Programador']));
+              Get.snackbar('Title Snackbar', 'Body Snackbar',
+              backgroundColor: Colors.white70,
+              forwardAnimationCurve: Curves.bounceOut);
             },
             color: Colors.blue,
             child: const Text(
@@ -49,6 +52,16 @@ class Page2Screen extends StatelessWidget {
             color: Colors.blue,
             child: const Text(
               'Añadir Profesion',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          MaterialButton(
+            onPressed: (){
+              Get.changeTheme(Get.isDarkMode ? ThemeData() : ThemeData.dark());
+            },
+            color: Colors.blue,
+            child: const Text(
+              'Cambiar Tema',
               style: TextStyle(color: Colors.white),
             ),
           )
